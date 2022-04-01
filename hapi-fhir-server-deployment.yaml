@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    prelusion.wildsea.service: hapi-fhir-server
+  name: hapi-fhir-server
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      prelusion.wildsea.service: hapi-fhir-server
+  template:
+    metadata:
+      labels:
+        prelusion.wildsea.service: hapi-fhir-server
+    spec:
+      containers:
+        - image: prelusion/wild-sea-hapi-fhir:latest
+          name: hapi-fhir-server
+          ports:
+            - containerPort: 8080
+          resources: {}
+      restartPolicy: Always
+status: {}

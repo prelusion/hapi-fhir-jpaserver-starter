@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    prelusion.wildsea.service: hapi-fhir-mysql
+  name: hapi-fhir-mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      prelusion.wildsea.service: hapi-fhir-mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        prelusion.wildsea.service: hapi-fhir-mysql
+    spec:
+      containers:
+        - args:
+            - --lower_case_table_names=1
+          env:
+            - name: MYSQL_DATABASE
+              value: hapi
+            - name: MYSQL_PASSWORD
+              value: admin
+            - name: MYSQL_ROOT_PASSWORD
+              value: admin
+            - name: MYSQL_USER
+              value: admin
+          image: mysql:latest
+          name: hapi-fhir-mysql
+          ports:
+            - containerPort: 3306
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: hapi-fhir-mysql
+      restartPolicy: Always
+      volumes:
+        - name: hapi-fhir-mysql
+          persistentVolumeClaim:
+            claimName: hapi-fhir-mysql
+status: {}

@@ -172,7 +172,7 @@ public class BaseJpaRestfulServer extends RestfulServer {
 
 				JpaCapabilityStatementProvider confProvider = new JpaCapabilityStatementProvider(this, fhirSystemDao,
 					daoConfig, searchParamRegistry, myValidationSupport);
-        confProvider.setImplementationDescription("HAPI FHIR R4 Server");
+        confProvider.setImplementationDescription("Wild Sea R4 Server");
         setServerConformanceProvider(confProvider);
       } else if (fhirVersion == FhirVersionEnum.R5) {
 

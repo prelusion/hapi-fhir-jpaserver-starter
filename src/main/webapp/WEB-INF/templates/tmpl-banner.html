@@ -3,10 +3,9 @@
 <div th:fragment="banner">
 	<div class="row">
 		<div class="col-md-8">
-			<img src="img/sample-logo.jpg" width="383" alt="Sample Logo" />
-		</div>
-		<div class="col-md-4">
-			<img src="img/hapi_fhir_banner_right.png" align="right" />
+			<div class="p-3">
+				<img src="https://wildsea.nl/wp-content/uploads/2018/04/logo_wildsea_medium_footer.png" width="383" alt="Wild Sea Logo" />
+			</div>
 		</div>
 	</div>
 	
@@ -15,6 +14,5 @@
 		<strong>Warning!</strong>
 		<p th:text="${errorMsg}"></p>
 	</div>
-	
 </div>
 </html>

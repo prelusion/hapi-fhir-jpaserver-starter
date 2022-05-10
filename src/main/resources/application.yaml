@@ -17,7 +17,11 @@ spring:
     url: 'jdbc:mysql://hapi-fhir-mysql:3306/hapi'
     username: admin
     password: admin
-    driverClassName: com.mysql.jdbc.Driver
+#    url: "jdbc:mysql://hapi-fhir-mysql-do-user-1355152-0.b.db.ondigitalocean.com:25060/defaultdb"
+#    username: doadmin
+#    password: AVNS_l-YHBrMT415mfHF
+#    driverClassName: com.mysql.jdbc.Driver  #Deprecated?
+    driverClassName: com.mysql.cj.jdbc.Driver
 
     # database connection pool size
     hikari:
@@ -92,7 +96,7 @@ hapi:
     #    enable_index_contained_resource: false
     #    advanced_lucene_indexing: false
     advanced_lucene_indexing: true
-#    enforce_referential_integrity_on_delete: false
+    #    enforce_referential_integrity_on_delete: false
     #    enforce_referential_integrity_on_write: false
     #    etag_support_enabled: true
     #    expunge_enabled: true
@@ -103,8 +107,8 @@ hapi:
     #    graphql_enabled: true
     #    narrative_enabled: true
     #    mdm_enabled: true
-#    local_base_urls:
-#      - https://hapi.fhir.org/baseR4
+    #    local_base_urls:
+    #      - https://hapi.fhir.org/baseR4
     mdm_enabled: true
     #    partitioning:
     #      allow_references_across_partitions: false
@@ -113,7 +117,7 @@ hapi:
       allow_Credentials: true
       # These are allowed_origin patterns, see: https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/cors/CorsConfiguration.html#setAllowedOriginPatterns-java.util.List-
       allowed_origin:
-        - '*'
+        - "*"
 
     # Search coordinator thread pool sizes
     search-coord-core-pool-size: 20
@@ -121,10 +125,10 @@ hapi:
     search-coord-queue-capacity: 200
 
     # Threadpool size for BATCH'ed GETs in a bundle.
-#    bundle_batch_pool_size: 10
-#    bundle_batch_pool_max_size: 50
+    #    bundle_batch_pool_size: 10
+    #    bundle_batch_pool_max_size: 50
 
-#    logger:
+    #    logger:
     #      error_format: 'ERROR - ${requestVerb} ${requestUrl}'
     #      format: >-
     #        Path[${servletPath}] Source[${requestHeader.x-forwarded-for}]
@@ -140,7 +144,7 @@ hapi:
     tester:
       home:
         name: Local Tester
-        server_address: 'http://localhost:8080/fhir'
+        server_address: "http://localhost:8080/fhir"
         refuse_to_fetch_third_party_urls: false
         fhir_version: R4
       global:

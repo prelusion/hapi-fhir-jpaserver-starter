@@ -1,5 +1,7 @@
 package ca.uhn.fhir.jpa.starter;
 
+import ca.uhn.fhir.jpa.starter.interceptors.RequestExceptionInterceptor;
+import ca.uhn.fhir.rest.server.interceptor.ResponseHighlighterInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 
@@ -21,8 +23,13 @@ public class JpaRestfulServer extends BaseJpaRestfulServer {
   protected void initialize() throws ServletException {
     super.initialize();
 
-    // Add your own customization here
+    // Add your own customization here++
 
+
+	  // Format the responses in nice HTML
+	  registerInterceptor(new ResponseHighlighterInterceptor());
+
+	  registerInterceptor(new RequestExceptionInterceptor());
   }
 
 }

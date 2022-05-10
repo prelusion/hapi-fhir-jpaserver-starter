@@ -43,7 +43,9 @@
                connectionTimeout="20000"
                redirectPort="8443" 
                maxThreads="${server.tomcat.max-threads}"
-               minSpareThreads="${server.tomcat.min-spare-threads}" /> 
+               minSpareThreads="${server.tomcat.min-spare-threads}" />
+    <!--               SSLEnabled="true"-->
+    <!--               SSLCertificateFile="conf/ca-certificate.crt"-->
 
     <!-- You should set jvmRoute to support load-balancing via AJP ie :
     <Engine name="Catalina" defaultHost="localhost" jvmRoute="jvm1">

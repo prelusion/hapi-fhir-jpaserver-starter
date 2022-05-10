@@ -3,6 +3,7 @@ WORKDIR /tmp/hapi-fhir-jpaserver-starter
 
 COPY pom.xml .
 COPY server.xml .
+
 RUN mvn -ntp dependency:go-offline
 
 COPY src/ /tmp/hapi-fhir-jpaserver-starter/src/
@@ -18,7 +19,9 @@ COPY --chown=nonroot:nonroot --from=build-distroless /app /app
 # 65532 is the nonroot user's uid
 # used here instead of the name to allow Kubernetes to easily detect that the container
 # is running as a non-root (uid != 0) user.
+
 USER 65532:65532
+EXPOSE 8080
 WORKDIR /app
 CMD ["/app/main.war"]
 
@@ -29,5 +32,6 @@ COPY --from=build-hapi /tmp/hapi-fhir-jpaserver-starter/target/*.war /usr/local/
 
 COPY catalina.properties /usr/local/tomcat/conf/catalina.properties
 COPY server.xml /usr/local/tomcat/conf/server.xml
+COPY ca-certificate.crt /usr/local/tomcat/conf/ca-certificate.crt
 
 CMD ["catalina.sh", "run"]

@@ -7,7 +7,7 @@ metadata:
   name: hapi-fhir-server
   namespace: default
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       prelusion.wildsea.service: hapi-fhir-server
@@ -17,7 +17,8 @@ spec:
         prelusion.wildsea.service: hapi-fhir-server
     spec:
       containers:
-        - image: prelusion/wild-sea-hapi-fhir:latest
+        - image: prelusion/wild-sea-hapi-fhir:latest # This is for docker-hub
+          # - image: registry.digitalocean.com/wildsea-fhir/wildsea-hapi-fhir:latest #Digital Ocean Registry image
           name: hapi-fhir-server
           ports:
             - containerPort: 8080

@@ -4,15 +4,15 @@ import ca.uhn.fhir.interceptor.api.Hook;
 import ca.uhn.fhir.interceptor.api.Interceptor;
 import ca.uhn.fhir.interceptor.api.Pointcut;
 
-@Interceptor //Optional annotation
+@Interceptor // Optional annotation
 
 public class TestInterceptor {
 
-		public TestInterceptor() {
-		}
-
-	@Hook(Pointcut.SERVER_INCOMING_REQUEST_PRE_PROCESSED) {
-
+	public TestInterceptor() {
 	}
+
+	// @Hook(Pointcut.SERVER_INCOMING_REQUEST_PRE_PROCESSED) {
+
+	// }
 
 }

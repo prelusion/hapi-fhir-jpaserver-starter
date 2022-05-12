@@ -31,7 +31,6 @@ public class RequestExceptionInterceptor {
 	@Hook(Pointcut.SERVER_INCOMING_REQUEST_PRE_PROCESSED)
 	public boolean incomingRequestPreProcessed(HttpServletRequest theRequest, HttpServletResponse theResponse) {
 		myRequestCount++;
-		System.out.print(myRequestCount);
 		System.out.println(myRequestCount);
 		return true;
 	}

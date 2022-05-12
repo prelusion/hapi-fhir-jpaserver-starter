@@ -1,6 +1,7 @@
 package ca.uhn.fhir.jpa.starter;
 
 import ca.uhn.fhir.jpa.starter.interceptors.RequestExceptionInterceptor;
+import ca.uhn.fhir.jpa.starter.interceptors.AdminAuthorizationInterceptor;
 import ca.uhn.fhir.rest.server.interceptor.ResponseHighlighterInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
@@ -25,11 +26,10 @@ public class JpaRestfulServer extends BaseJpaRestfulServer {
 
     // Add your own customization here++
 
-
-	  // Format the responses in nice HTML
-	  registerInterceptor(new ResponseHighlighterInterceptor());
-
-	  registerInterceptor(new RequestExceptionInterceptor());
+    // Format the responses in nice HTML
+    registerInterceptor(new AdminAuthorizationInterceptor());
+    registerInterceptor(new ResponseHighlighterInterceptor());
+    registerInterceptor(new RequestExceptionInterceptor());
   }
 
 }

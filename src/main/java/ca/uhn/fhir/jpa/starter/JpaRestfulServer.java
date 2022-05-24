@@ -1,5 +1,7 @@
 package ca.uhn.fhir.jpa.starter;
 
+import ca.uhn.fhir.jpa.starter.interceptors.AdminAuthorizationInterceptor;
+import ca.uhn.fhir.jpa.starter.interceptors.PatientAuthorizationInterceptor;
 import ca.uhn.fhir.jpa.starter.interceptors.RequestExceptionInterceptor;
 import ca.uhn.fhir.jpa.starter.interceptors.AdminAuthorizationInterceptor;
 import ca.uhn.fhir.rest.server.interceptor.ResponseHighlighterInterceptor;
@@ -30,6 +32,7 @@ public class JpaRestfulServer extends BaseJpaRestfulServer {
     registerInterceptor(new AdminAuthorizationInterceptor());
     registerInterceptor(new ResponseHighlighterInterceptor());
     registerInterceptor(new RequestExceptionInterceptor());
+	  registerInterceptor(new PatientAuthorizationInterceptor());
   }
 
 }

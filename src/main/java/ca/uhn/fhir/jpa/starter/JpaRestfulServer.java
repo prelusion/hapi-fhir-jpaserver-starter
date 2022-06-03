@@ -1,7 +1,7 @@
 package ca.uhn.fhir.jpa.starter;
 
+import ca.uhn.fhir.jpa.starter.auth.AuthUser;
 import ca.uhn.fhir.jpa.starter.interceptors.*;
-import ca.uhn.fhir.jpa.starter.interceptors.AdminAuthorizationInterceptor;
 import ca.uhn.fhir.rest.server.interceptor.ResponseHighlighterInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
@@ -25,16 +25,19 @@ public class JpaRestfulServer extends BaseJpaRestfulServer {
     super.initialize();
 
     // Add your own customization here++
+	  AuthUser user = new AuthUser();
 
     // Format the responses in nice HTML
 	  registerInterceptor(new ResponseHighlighterInterceptor());
+    System.out.println("111");
+	  registerInterceptor(new JWTInterceptor(user));
+    System.out.println("777");
+	  registerInterceptor(new AuthHandleInterceptor(user));
 
 //	  registerInterceptor(new TestAuthNextInterceptor());
-//	  registerInterceptor(new TestAuthInterceptor());
-
 //    registerInterceptor(new AdminAuthorizationInterceptor());
 //    registerInterceptor(new RequestExceptionInterceptor());
-	 	registerInterceptor(new PatientAuthorizationInterceptor());
+//	 	registerInterceptor(new PatientAuthorizationInterceptor());
   }
 
 }

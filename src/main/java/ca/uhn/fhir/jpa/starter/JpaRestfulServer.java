@@ -25,14 +25,14 @@ public class JpaRestfulServer extends BaseJpaRestfulServer {
     super.initialize();
 
     // Add your own customization here++
-	  AuthUser user = new AuthUser();
-
-    // Format the responses in nice HTML
-	  registerInterceptor(new ResponseHighlighterInterceptor());
-    System.out.println("111");
-	  registerInterceptor(new JWTInterceptor(user));
-    System.out.println("777");
-	  registerInterceptor(new AuthHandleInterceptor(user));
+//	  AuthUser user = new AuthUser();
+//
+//    // Format the responses in nice HTML
+//	  registerInterceptor(new ResponseHighlighterInterceptor());
+//    System.out.println("111");
+//	  registerInterceptor(new JWTInterceptor(user));
+//    System.out.println("777");
+//	  registerInterceptor(new AuthHandleInterceptor(user));
 
 //	  registerInterceptor(new TestAuthNextInterceptor());
 //    registerInterceptor(new AdminAuthorizationInterceptor());
